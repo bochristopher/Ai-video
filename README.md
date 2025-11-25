@@ -77,13 +77,79 @@ http://localhost:5000
 - `POST /api/generate` - Generate a video from a prompt
 - `GET /api/status/<job_id>` - Check generation status
 - `GET /api/video/<video_id>` - Retrieve generated video
+- `GET /api/jobs` - List all jobs
+- `GET /api/models` - List available models
+- `GET /health` - Health check
+
+## Testing
+
+The project includes comprehensive tests:
+
+### Unit Tests
+- Backend API endpoint tests
+- Video generator logic tests
+- Mock external dependencies
+
+### Integration Tests
+- End-to-end workflow tests
+- Multi-job handling
+- Error scenarios
+
+### UI Tests
+- Selenium-based browser tests
+- Playwright tests (alternative)
+- Form interactions
+- Responsive design
+- Accessibility checks
+
+### Running Tests
+
+**All tests:**
+```bash
+./run_tests.sh
+```
+
+**Specific test suite:**
+```bash
+python tests/test_app.py          # API tests
+python tests/test_video_generator.py  # Generator tests
+python tests/test_integration.py  # Integration tests
+python tests/test_ui.py           # UI tests (Selenium)
+python tests/test_ui_playwright.py  # UI tests (Playwright)
+```
+
+**Install UI test dependencies:**
+```bash
+# For Selenium
+pip install selenium
+# Install ChromeDriver or Firefox GeckoDriver
+
+# For Playwright
+pip install playwright
+playwright install chromium
+```
+
+## Logging and Debugging
+
+The application includes comprehensive logging:
+
+- **Backend**: Initialization, requests, progress, errors with tracebacks
+- **Frontend**: API calls, status updates, user actions in browser console
+- **Format**: `[Component] Message` with ✓ and ✗ indicators
+
+View logs in terminal (backend) or browser console (frontend).
 
 ## Configuration
 
 Edit `.env` to configure:
-- API keys
-- Model selection
+- API keys (REPLICATE_API_TOKEN)
+- Server settings (PORT, HOST)
 - Video parameters (resolution, duration, fps)
+- Storage settings
+
+## Architecture
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed system design, data flow, and implementation details.
 
 ## License
 
